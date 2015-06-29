@@ -1,7 +1,7 @@
 {
   "name": "dim-bungie-platform",
   "version": "1.0.0-beta-01",
-  "description": "DIM implementation of the Bungie Platform API",
+  "description": "DIM implementation of the Bungie Platform API.",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DestinyItemManager/dim-bungie-platform.git"

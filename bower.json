@@ -1,0 +1,29 @@
+{
+  "name": "dim-bungie-platform",
+  "version": "1.0.0-beta-01",
+  "homepage": "https://github.com/DestinyItemManager/dim-bungie-platform",
+  "authors": [
+    "Rick Casey (SunburnedGoose) <rick.casey@gmail.com>"
+  ],
+  "description": "DIM implementation of the Bungie Platform API.",
+  "moduleType": [
+    "es6"
+  ],
+  "keywords": [
+    "DIM",
+    "Bungie",
+    "Platform",
+    "API",
+    "Destiny",
+    "Item",
+    "Manager"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
