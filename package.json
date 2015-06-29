@@ -1,0 +1,24 @@
+{
+  "name": "dim-bungie-platform",
+  "version": "1.0.0",
+  "description": "This is not intended to be a complete implementation of the Bungie Platform.  It's use is solely for Destiny Item Manager and its requirements.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DestinyItemManager/dim-bungie-platform.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DestinyItemManager/dim-bungie-platform/issues"
+  },
+  "homepage": "https://github.com/DestinyItemManager/dim-bungie-platform#readme",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-typescript": "^0.6.2",
+    "typescript": "^1.5.0-beta"
+  }
+}
