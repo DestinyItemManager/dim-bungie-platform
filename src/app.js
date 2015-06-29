@@ -1,38 +1,27 @@
-// import { asyncTest } from "./async.js";
+import {
+  asyncTest as promiseTest
+}
+from "./async.js";
 
-// asyncTest().then((c) => {
-//   console.log(c);
-// });
-function asyncTest() {
-  return new Promise((resolve, reject) => {
-      window.setTimeout(() => {
-        reject("a");
-      }, 1000);
-  });
+function promiseFn() {
+  promiseTest().then(function(d) {
+      console.log("Promise: " + d);
+    }, function(err) {
+      console.log("Promise Err: " + err);
+    })
+    .catch(function(err) {
+      console.log("Promise Err: " + err);
+    });
 }
 
-
-
-
-async function a() {
+async function asyncFn() {
   try {
-    // var b = await asyncTest();
-    var b = await asyncTest();
-    console.log("E: " + b);
-    // console.log(b);
+    var b = await promiseTest();
+    console.log("Async: " + b);
   } catch (err) {
-    console.log('err ' + err);
+    console.log("Async Err: " + err);
   }
 }
 
-a();
-
-
-asyncTest().then(function(d) {
-  console.log("D: " + d);
-}, function(err) {
-  console.log('err ' + err);
-})
-.catch(function(err) {
-  console.log('err ' + err);
-});
+promiseFn();
+asyncFn();

@@ -1,41 +1,41 @@
 "use strict";
 
-var _asyncToGenerator = function (fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { var callNext = step.bind(null, "next"); var callThrow = step.bind(null, "throw"); function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(callNext, callThrow); } } callNext(); }); }; };
+var promiseTest = require("./async.js").asyncTest;
 
-var a = _asyncToGenerator(function* () {
-  try {
-    // var b = await asyncTest();
-    var b = yield asyncTest();
-    console.log("E: " + b);
-    // console.log(b);
-  } catch (err) {
-    console.log("err " + err);
-  }
-});
 
-// import { asyncTest } from "./async.js";
-
-// asyncTest().then((c) => {
-//   console.log(c);
-// });
-function asyncTest() {
-  return new Promise(function (resolve, reject) {
-    window.setTimeout(function () {
-      reject("a");
-    }, 1000);
+function promiseFn() {
+  promiseTest().then(function (d) {
+    console.log("Promise: " + d);
+  }, function (err) {
+    console.log("Promise Err: " + err);
+  })["catch"](function (err) {
+    console.log("Promise Err: " + err);
   });
 }
 
+function asyncFn() {
+  var b;
+  return regeneratorRuntime.async(function asyncFn$(context$1$0) {
+    while (1) switch (context$1$0.prev = context$1$0.next) {
+      case 0:
+        context$1$0.prev = 0;
+        context$1$0.next = 3;
+        return promiseTest();
+      case 3:
+        b = context$1$0.sent;
+        console.log("Async: " + b);
+        context$1$0.next = 10;
+        break;
+      case 7:
+        context$1$0.prev = 7;
+        context$1$0.t0 = context$1$0["catch"](0);
+        console.log("Async Err: " + context$1$0.t0);
+      case 10:
+      case "end":
+        return context$1$0.stop();
+    }
+  }, null, this, [[0, 7]]);
+}
 
-
-
-a();
-
-
-asyncTest().then(function (d) {
-  console.log("D: " + d);
-}, function (err) {
-  console.log("err " + err);
-})["catch"](function (err) {
-  console.log("err " + err);
-});
+promiseFn();
+asyncFn();
