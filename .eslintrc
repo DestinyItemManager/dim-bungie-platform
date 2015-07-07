@@ -1,18 +1,21 @@
 {
   "parser": "babel-eslint",
+
   "env": {
-    "es6": true
+    "browser": true,
+    "phantomjs": false,
+    "jquery": true
   },
-  "ecmaFeatures": {
-    "modules": true
-  },
-  "rules": {
-    "no-console": 0
-  },
+
   "globals": {
-    "module": true,
-    "require": true,
-    "window": true,
-    "console": true
+    "angular": true,
+    "Promise": true
+  },
+
+  "rules": {
+    "global-strict": 0,
+    "no-extra-strict": 0,
+    "strict": 0,
+    "no-use-before-define": 0
   }
 }

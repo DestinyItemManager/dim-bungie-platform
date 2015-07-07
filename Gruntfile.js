@@ -1,23 +1,53 @@
 module.exports = function(grunt) {
-  require('load-grunt-tasks')(grunt);
+    require('load-grunt-tasks')(grunt);
 
-  grunt.initConfig({
-    babel: {
-      options: {
-        modules: 'common',
-        sourceMap: true,
-        optional: ['es7.asyncFunctions', 'runtime']
-      },
-      dist: {
-        files: [{
-          expand: true,
-          cwd: 'src',
-          src: ['**/*.es6.js'],
-          dest: 'app/scripts'
-        }]
-      }
-    }
-  });
+    grunt.loadNpmTasks('grunt-browserify');
 
-  grunt.registerTask('default', ['babel']);
-};
+    grunt.initConfig({
+        "clean": {
+          "build": [
+            "./.tmp",
+            "./dist"
+          ],
+          "release": [
+            "./.tmp",
+            "./dist"
+          ]
+        },
+        "babel": {
+          "options": {
+            "modules": 'common',
+            "sourceMap": true,
+            "experimental": true
+          },
+          "dist": {
+            "files": [{
+              "expand": true,
+              "cwd": 'src',
+              "src": ['**/*.js'],
+              "dest": '.tmp/scripts'
+            }]
+          }
+        },
+        "browserify": {
+          "dist": {
+            "files": {
+              'dist/bungieNetPlatform.js': [
+                'src/dimBungieNetPlatform.module.js'
+              ],
+            },
+            "options": {
+              "transform": [
+                'browserify-shim',
+                'babelify'
+              ]
+            }
+          }
+        }
+      });
+
+      grunt.registerTask('default', [
+        'clean:build',
+        'browserify'
+      ]);
+    };
